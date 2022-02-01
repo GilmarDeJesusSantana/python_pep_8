@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from constantes import TAMANHO_PADRAO_MAXIMO, TAMANHO_PADRAO_MINIMO
 
 
 class FilaBase(metaclass=ABCMeta):
@@ -8,18 +9,22 @@ class FilaBase(metaclass=ABCMeta):
     senha_atual: str = ''
 
     def reseta_fila(self):
-        if self.codigo >= 100:
-            self.codigo = 0
+        if self.codigo >= TAMANHO_PADRAO_MAXIMO:
+            self.codigo = TAMANHO_PADRAO_MINIMO
         else:
             self.codigo += 1
+
+    def inseri_cliente(self):
+        self.fila.append(self.senha_atual)
 
     @abstractmethod
     def gera_senha_atual(self):
         ...
 
-    @abstractmethod
     def atualiza_fila(self):
-        ...
+        self.reseta_fila()
+        self.gera_senha_atual()
+        self.inseri_cliente()
 
     @abstractmethod
     def chama_cliente(self, caixa: int):

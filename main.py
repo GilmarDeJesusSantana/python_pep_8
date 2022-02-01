@@ -1,5 +1,5 @@
 from fila_normal import Filanormal
-from fila_prioritaria import FilaPrioritaria
+# from fila_prioritaria import FilaPrioritaria
 
 # fila_teste = Filanormal()
 # fila_teste.atualizafila()
